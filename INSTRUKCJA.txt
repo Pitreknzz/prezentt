@@ -1,0 +1,27 @@
+STRONA DLA MISI – JEDEN PLIK
+
+Wszystko znajduje się w jednym pliku: index.html (HTML, CSS i JavaScript w środku).
+Nie potrzeba instalować żadnych programów.
+
+PUBLIKACJA NA GITHUB PAGES
+1. Wejdź na github.com i utwórz nowe repozytorium, np. misia.
+2. Wgraj do repozytorium plik index.html.
+3. Otwórz Settings -> Pages.
+4. W sekcji Build and deployment wybierz Deploy from a branch.
+5. Wybierz branch main oraz folder /(root), kliknij Save.
+6. Po publikacji adres będzie wyglądał tak:
+   https://TWOJ_LOGIN.github.io/misia/
+7. Wygeneruj kod QR z tego adresu.
+
+WAŻNE – ZDJĘCIA I MUZYKA
+Przycisk „Dodaj Wasze zdjęcia” pozwala wybrać zdjęcia do podglądu w bieżącej przeglądarce.
+Żeby dziewczyna również je widziała, dodaj zdjęcia do repozytorium i zmień stronę:
+zamiast placeholderów w sekcji gallery umieść np.:
+<figure class="photo"><img src="images/foto1.jpg" alt="Nasze zdjęcie"><figcaption>Nasza chwila</figcaption></figure>
+Analogicznie dodaj kolejne zdjęcia w folderze images.
+Muzykę można wybrać przyciskiem na stronie, ale jeśli ma być dostępna dla niej,
+dodaj plik np. song.mp3 do repozytorium i w kodzie ustaw źródło audio na song.mp3.
+
+LICZNIK
+Start: 10 lipca 2026, godz. 20:00, według lokalnego czasu urządzenia.
+Aktualizuje się co sekundę i pokazuje pełne dni oraz godziny, minuty i sekundy.
