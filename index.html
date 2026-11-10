@@ -61,10 +61,9 @@ footer{text-align:center;color:var(--muted);padding:30px 0 55px}.music-ctrl{posi
  <section class="section shell">
   <div class="heading"><div class="tiny">nasze zdjęcia</div><h2>Nasze ulubione kadry</h2></div>
   <div class="gallery" id="gallery">
-   <!-- Wpisz w src ścieżki do swoich zdjęć znajdujących się w folderze ze stroną -->
-   <figure class="photo" style="--r:-2deg"><img src="att.8Ms4LF-R3WBFTE72uk5gtwgHSDJveT8_ZuICnYygz7c.jpeg" alt="att.8Ms4LF-R3WBFTE72uk5gtwgHSDJveT8_ZuICnYygz7c.jpeg"><figcaption>Nasza chwila</figcaption></figure>
-   <figure class="photo" style="--r:1.5deg"><img src="IMG_0555.jpeg" alt="IMG_0555.jpeg"><figcaption>Moja ulubiona osoba</figcaption></figure>
-   <figure class="photo" style="--r:-1deg"><img src="IMG_0035.jpeg" alt="IMG_0035.jpeg"><figcaption>Razem najlepiej</figcaption></figure>
+   <figure class="photo" style="--r:-2deg"><img src="att.8Ms4LF-R3WBFTE72uk5gtwgHSDJveT8_ZuICnYygz7c.jpeg" alt="Zdjęcie 1"><figcaption>Nasza chwila</figcaption></figure>
+   <figure class="photo" style="--r:1.5deg"><img src="IMG_0555.jpeg" alt="Zdjęcie 2"><figcaption>Moja ulubiona osoba</figcaption></figure>
+   <figure class="photo" style="--r:-1deg"><img src="IMG_0035.jpeg" alt="Zdjęcie 3"><figcaption>Razem najlepiej</figcaption></figure>
   </div>
  </section>
 
@@ -83,8 +82,8 @@ Kocham Cię bardzo. ❤️</div>
  </section>
 
  <section class="section shell">
-  <div class="heading"><div class="tiny">mała lista powodów</div><h2>Dlaczego właśnie Ty?</h2><p>Naciśnij przycisk, a pokażę Ci jeden z wielu powodów.</p></div>
-  <div class="card reason-box"><div class="reason" id="reason">Bo Twój uśmiech potrafi poprawić mi nawet najgorszy dzień. ❤️</div><button class="btn light" id="reasonBtn">Pokaż kolejny powód ♡</button></div>
+  <div class="heading"><div class="tiny">mała lista powodów</div><h2>Dlaczego właśnie Ty?</h2><p>Naciśnij przycisk, a pokażę Ci kolejny powód.</p></div>
+  <div class="card reason-box"><div class="reason" id="reason">Bo jesteś po prostu najlepsza. ❤️</div><button class="btn light" id="reasonBtn">Pokaż kolejny powód ♡</button></div>
  </section>
 
  <section class="section shell">
@@ -99,7 +98,6 @@ Kocham Cię bardzo. ❤️</div>
  <footer>Zrobione z miłością, specjalnie dla Ciebie ♡</footer>
 </main>
 
-<!-- Wpisz w src ścieżkę do pliku z muzyką -->
 <audio id="music" src="music.mp3" loop></audio>
 <button class="music-ctrl" id="musicBtn" hidden>♫ Wyłącz muzykę</button>
 
@@ -126,7 +124,6 @@ function reveal(){
  $("main").hidden = false;
  $("musicBtn").hidden = false;
  
- // Odtwarzanie muzyki po otwarciu
  const audio = $("music");
  if(audio.src){
   audio.play().then(()=>{
@@ -143,6 +140,9 @@ $("envelope").addEventListener("click",reveal);
 $("envelope").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();reveal();}});
 
 const reasons=[
+ "Bo jesteś po prostu najlepsza. ❤️",
+ "Jesteś najcudowniejszą osobą jaką poznałem. ✨",
+ "Przy Tobie czuję się naprawdę szczęśliwy. 🥰",
  "Bo Twój uśmiech potrafi poprawić mi nawet najgorszy dzień. ❤️",
  "Bo przy Tobie mogę być po prostu sobą.",
  "Bo nawet zwykłe chwile z Tobą są wyjątkowe.",
@@ -151,13 +151,15 @@ const reasons=[
  "Bo masz w sobie coś, czego nie da się zastąpić.",
  "Bo lubię nasze rozmowy – nawet te zupełnie o niczym.",
  "Bo odkąd jesteś obok, mam jeszcze więcej powodów do uśmiechu.",
- "Bo jesteś moją najlepsza. I zawsze moge ci zaufać. 💗"
+ "Bo jesteś dla mnie najważniejsza i zawsze mogę Ci zaufać. 💗"
 ];
-let last=-1;
+
+let currentIndex = 0;
 $("reasonBtn").addEventListener("click",()=>{
- let n; do{n=Math.floor(Math.random()*reasons.length)}while(n===last&&reasons.length>1);
- last=n; $("reason").textContent=reasons[n];
+ currentIndex = (currentIndex + 1) % reasons.length;
+ $("reason").textContent = reasons[currentIndex];
 });
+
 $("secretBtn").addEventListener("click",()=>{
  $("secret").classList.toggle("show");
  $("secretBtn").textContent=$("secret").classList.contains("show")?"Schowaj wiadomość ♡":"Otwórz tajemniczą wiadomość";
@@ -174,7 +176,6 @@ $("musicBtn").addEventListener("click",()=>{
  }
 });
 
-/* Lekkie, unoszące się serduszka w tle */
 function heart(){
  const el=document.createElement("span");el.className="float";el.textContent=Math.random()>.5?"♡":"♥";
  el.style.left=Math.random()*100+"vw";el.style.fontSize=(13+Math.random()*23)+"px";
